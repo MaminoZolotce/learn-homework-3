@@ -34,23 +34,36 @@ CLIENTS = [
 
 def get_departed(clients):
     """Верни список словарей ушедших клиентов в исходном порядке."""
-    pass
+    if not clients:
+        return clients
+
+    return [client for client in clients if client["churn"] == 0]
 
 
-def calculate_departed_share(clients):
+def calculate_departed_share(clients: list, length: int) -> float:
     """Верни долю ушедших среди всех клиентов. Для [] верни 0.0."""
-    pass
-
+    if not clients:
+        return 0.0
+    return 1/len(clients)*length
 
 def count_departed_by_city(clients):
     """Верни словарь город -> число ушедших.
     Включи каждый город из clients, даже если ушедших в нём нет.
     """
-    pass
-
+    result = {}
+    for client in clients:
+        if client['churn'] == 0:
+            result[client['city']] = result.get(client['city'], 0) + 1
+        else:
+            result[client['city']] = result.get(client['city'], 0)
+    return result
 
 def build_report(clients):
     """Верни словарь с шестью ключами, перечисленными в условии."""
+    departed_clients = get_departed(clients)
+    departed_share = calculate_departed_share(clients, len(departed_clients))
+    departed_by_city = count_departed_by_city(clients)
+    print(departed_clients, departed_share, departed_by_city, sep='\n')
     pass
 
 

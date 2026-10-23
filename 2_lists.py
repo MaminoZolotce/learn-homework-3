@@ -10,14 +10,19 @@ def filter_scores(scores, minimum=60):
     """Верни новый список значений >= minimum, сохранив порядок.
     filter_scores([40, 60, 90, 55]) -> [60, 90]
     """
-    pass
-
+    return [score for score in scores if score >= minimum]
 
 def unique_in_order(values):
     """Верни элементы без повторов в порядке первого появления.
     unique_in_order(["a", "b", "a", "c"]) -> ["a", "b", "c"]
     """
-    pass
+    check = []
+    for i in values:
+        if i not in check:
+            check.append(i)
+
+    return check
+
 
 
 def summarize_numbers(numbers):
@@ -25,8 +30,12 @@ def summarize_numbers(numbers):
     Для пустого списка: {"count": 0, "total": 0, "average": None}.
     summarize_numbers([2, 4, 6]) -> {"count": 3, "total": 12, "average": 4.0}
     """
-    pass
+    if not numbers:
+        return 0
+    total = sum(numbers)
+    count = len(numbers)
 
+    return count, total, total/count
 
 def main():
     print("Проходные баллы:", filter_scores([40, 60, 90, 55]))
