@@ -21,7 +21,7 @@ def scope_demo():
 
 
 def increase(value, step=1):
-    pass
+    return value + step
 
 
 def main():
@@ -34,3 +34,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

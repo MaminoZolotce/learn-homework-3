@@ -11,15 +11,14 @@ def normalize_name(name):
     normalize_name("  аННА иВАНОВА  ") -> "Анна Иванова"
     normalize_name("") -> ""
     """
-    pass
-
+    return name.strip().title()
 
 def count_words(text):
     """Верни количество слов, разделённых пробелами.
     count_words("  Python   это интересно  ") -> 3
     count_words("") -> 0
     """
-    pass
+    return len(text.split())
 
 
 def make_slug(text):
@@ -28,7 +27,7 @@ def make_slug(text):
     Пунктуацию сохраняй; транслитерация не нужна.
     make_slug("  Учим   Python  ") -> "учим-python"
     """
-    pass
+    return '-'.join(text.lower().split())
 
 
 def main():
@@ -38,6 +37,7 @@ def main():
     print("Пустой текст:", count_words(""))
     print("Slug:", make_slug("  Учим   Python  "))
     print("Пустой slug:", make_slug(""))
+
 
 
 if __name__ == "__main__":
